@@ -59,7 +59,7 @@ export default class TapRating extends Component {
 
   render() {
     const { position } = this.state
-    const { count, reviews, showRating, reviewColor, reviewSize } = this.props
+    const { count, reviews, showRating, reviewColor, reviewSize, ratingContainer } = this.props
     const rating_array = []
     const starContainerStyle = [styles.starContainer]
 
@@ -80,7 +80,7 @@ export default class TapRating extends Component {
     })
 
     return (
-      <View style={styles.ratingContainer}>
+      <View style={[styles.ratingContainer, ratingContainer]}>
         { showRating &&
           <Text style={[styles.reviewText, {fontSize: reviewSize, color: reviewColor}]}>
             {reviews[position - 1]}
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
   ratingContainer: {
     backgroundColor: 'transparent',
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
   reviewText: {
     fontWeight: 'bold',
